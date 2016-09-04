@@ -1,0 +1,61 @@
+<p>Name: <%= @user.first_name %> !</p>
+<p>Amount Balance: $<%= @user.money %></p>
+
+<table border="thin">
+
+<td><h2>List of people in need of help</h2></td>
+
+
+<% @allborrower.each do |t| %>
+<tr><td><p>Name: <%= t.first_name %>
+<%= t.last_name %></p></td>
+<td>Money needed for: <%= t.money_need %></td>
+<td>Reason for loan<%= t.description %></td>
+<td>Amount needed: $<%= t.money %></td>
+<td>Amount Raise: $ <%= t.amount_raised %></td>
+<td>Action</td>:
+
+
+<td><form action="/transactions/index" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+<input type="hidden" name="user_id"  value="<%= @user.id %>">
+<input type="hidden" name="borrower_id" value="<%= t.id %>">
+<select name="transaction_amount">
+	<option>25</option>
+	<option>50</option>
+	<option>75</option>
+	<option>100</option>
+	<option>125</option>
+	<option>150</option>
+	<option>175</option>
+	<option>200</option>
+	<option>500</option>
+	<option>1000</option>
+	<option>2000</option>
+	<option>5000</option>
+</select></td>
+
+<td><input type="submit" Value="Lend"></tr></td>
+</form>
+<%end%>
+
+<%  if flash[:bad]%>
+<%= flash[:bad] %>
+<%end%>
+
+
+
+<tr><td><h2>List of people you lend money to:</h2></td><tr>
+<% @transaction.each do |t|%>
+<tr><td>Name: <%= t.borrower.first_name %></td>
+<td>Lend amount: <%= t.transaction_amount %></td>
+<td>Reason for Loan:<%= t.borrower.money_need %></td>
+<td>Money needed: <%= t.borrower.money %></td>
+<td>Money Raised: <%=  t.borrower.amount_raised%></td></tr>
+
+<%end%>
+</table>
+
+
+
+

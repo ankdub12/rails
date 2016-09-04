@@ -1,0 +1,49 @@
+Welcome!
+
+<h3>Lender</h3>
+
+<form action="/users/create" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+<p> First Name: <input type="text" name="user[first_name]"></p>
+<p>Last Name: <input type="text" name="user[last_name]"></p>
+<p>Email: <input type="text" name="user[email]"></p>
+<p>Password: <input type="password" name="user[password]"></p>
+<p>Money: <select name="user[money]" >
+	<option>100</option>
+	<option>200</option>
+	<option>300</option>
+	<option>400</option>
+	<option>500</option>
+	<option>1000</option>
+	<option>5000</option>
+</select></p>
+<p><input type="submit" value="Register"></p>
+</form>
+
+<a href="/users/log">Member</a>
+<h3>Borrower</h3>
+
+<form action="/borrowers/create"  method="post"> 
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+<p>First Name: <input type="text" name="first_name"></p>
+<p>Last Name:<input type="text" name="last_name"> </p>
+<p>Email:<input type="text" name="email"></p>
+<p>Password:<input type="password" name="password"></p>
+<p>Need Money for:<input type="text" name="money_need"></p>
+<p>Description:  <textarea name="description"></textarea></p>
+<p>Need Money for:<input type="hidden" name="amount_raised" value="0" ></p>
+<p>Amount Needed: <select name="money" >
+	<option>50</option>
+	<option>100</option>
+	<option>200</option>
+	<option>300</option>
+	<option>500</option>
+	<option>1000</option>
+	<option>5000</option>
+</select></p>
+<p><input type="submit" value="Register"></p>
+
+</form>
+<a href="/users/log">Member</a>
+
+

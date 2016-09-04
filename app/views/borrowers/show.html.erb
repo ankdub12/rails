@@ -1,0 +1,20 @@
+
+<a href="/users/index"><button>logout</button></a>
+
+
+<h3>Hi <%= @borrower.first_name %> !</h3>
+<p>Money Needed:<%= @borrower.money %></p>
+<p>Money Raise:<%= @borrower.amount_raised %></p>
+
+
+
+
+<table border="thin">
+<tr><h4>List of people who lend you money</h4></tr>
+<%  @t.each do |x|%>
+<tr><td>Name: <%= x.user.first_name %><%= x.user.last_name %></td>
+<td>Email:<%= x.user.email %></td>
+<td>Amount:<%= x.transaction_amount%></td></tr>
+<%end%>
+
+</table>
